@@ -2,7 +2,7 @@
 
 REM Copy single [.ext] file into other destination folder
 
-set LOGFILE=backup.log
+set LOGFILE=C:\backup.log
 call :LOG >> %LOGFILE%
 exit /B
 
