@@ -1,26 +1,30 @@
 
+**********************************
+
+Started: 05.05.2022 23:23:54,60
+
+Locate the newest *.mbsb file: "asdfasdf - Kopi.mbsb"
+Checking if old backup alredy exist...
+
+"C:\bkp\asdfasdf - Kopi.mbsb" already exist.
+
+Completed: 05.05.2022 23:23:54,61
+
 
 
 **********************************
 
-Started: 05.05.2022 22:03:18,15
+Started: 05.05.2022 23:24:04,81
 
-Locate the newest *.bak file: "adsf asdfadsf asdfadsf.mbsb"
+Locate the newest *.mbsb file: "asdfasdf - Kopi.mbsb"
 Checking if old backup alredy exist...
 
-"C:\bkp\adsf asdfadsf asdfadsf.mbsb" already exist.
+Removing old .mbsb files first...
+Deleted file - C:\bkp\05052022.mbsb
+Deleted file - C:\bkp\06052022.mbsb
+Deleted file - C:\bkp\asdfasdf.mbsb
+Starts copy....
 
-Completed: 05.05.2022 22:03:18,17
-
-
-
-**********************************
-
-Started: 05.05.2022 22:03:21,17
-
-Locate the newest *.bak file: "adsf asdfadsf asdfadsf.mbsb"
-Checking if old backup alredy exist...
-
-"C:\bkp\adsf asdfadsf asdfadsf.mbsb" already exist.
-
-Completed: 05.05.2022 22:03:21,19
+100% copied         1 file(s) copied.
+ 
+Completed: 05.05.2022 23:24:04,83
