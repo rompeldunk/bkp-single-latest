@@ -2,7 +2,7 @@
 
 REM Copy single [.ext] file into other destination folder
 
-set LOGFILE=C:\backup.log
+set LOGFILE=backup.log
 call :LOG >> %LOGFILE%
 exit /B
 
@@ -25,7 +25,7 @@ set destfilepath=
 set srcfilepath=
 
 pushd %srcDir%
-FOR /F "delims=" %%I IN ('DIR "*.*" /A-D /B /O:D') DO SET "lastmod=%%I"
+FOR /F "delims=" %%I IN ('DIR "*.%ext%" /A-D /B /O:D') DO SET "lastmod=%%I"
 
 echo:
 echo Locate the newest *.%ext% file: "%lastmod%"
