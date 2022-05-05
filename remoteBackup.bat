@@ -1,33 +1,49 @@
-REM Copy the most recent database backups from their folders 
 @echo off
 
-REM Copy File in one destination to another --------------------------------------------
+REM Copy single [.ext] file into other destination folder
 
 setlocal
 set srcDir="C:\source"
 set destdir="C:\bkp"
+set ext=bak
+
+set LOGFILE=batch.log
+call :LOG >> %LOGFILE%
+exit /B
+
+:LOG
+
+echo:
+echo:
+echo:
+echo **********************************
+echo:
+@echo Started: %date% %time%
 
 set lastmod=
 set destfilepath=
-set ext=bak
 
 pushd %srcDir%
 FOR /F "delims=" %%I IN ('DIR "*.*" /A-D /B /O:D') DO SET "lastmod=%%I"
-echo Locate the most recently changed *.%ext% file: %lastmod%
+
+echo:
+echo Locate the newest *.%ext% file: "%lastmod%"
 
 if "%lastmod%"=="" (
     echo Could not locate any .%ext% file. Exiting backup...
-    goto :eof
+    goto :exit
 )
 
-echo Set backup dest filepath...
 cd /d %destdir%
 for %%A in ("%~f1.\%lastmod%") do set destfilepath="%%~fA"
 
 echo Checking if old backup alredy exist...
+echo:
+
 if exist %destfilepath% (
     echo %destfilepath% already exist.
-    goto :eof
+    echo:
+    goto :exit
     
 ) else (
    
@@ -38,5 +54,12 @@ if exist %destfilepath% (
     echo Backup does not exist. Starts copy....
     cd /d %srcDir%
     copy /z "%lastmod%" "%destDir%"
-
+    echo: 
+    goto :exit
 )
+
+:exit
+@echo Completed: %date% %time%
+
+
+
