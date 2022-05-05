@@ -2,16 +2,16 @@
 
 REM Copy single [.ext] file into other destination folder
 
-setlocal
-set srcDir="C:\source"
-set destdir="C:\bkp"
-set ext=bak
-
-set LOGFILE=batch.log
+set LOGFILE=backup.log
 call :LOG >> %LOGFILE%
 exit /B
 
 :LOG
+
+setlocal
+set srcDir="C:\source"
+set destdir="C:\bkp"
+set ext=mbsb
 
 echo:
 echo:
@@ -22,6 +22,7 @@ echo:
 
 set lastmod=
 set destfilepath=
+set srcfilepath=
 
 pushd %srcDir%
 FOR /F "delims=" %%I IN ('DIR "*.*" /A-D /B /O:D') DO SET "lastmod=%%I"
@@ -34,8 +35,11 @@ if "%lastmod%"=="" (
     goto :exit
 )
 
-cd /d %destdir%
+pushd %destdir%
 for %%A in ("%~f1.\%lastmod%") do set destfilepath="%%~fA"
+
+pushd %srcDir%
+for %%A in ("%~f1.\%lastmod%") do set srcfilepath="%%~fA"
 
 echo Checking if old backup alredy exist...
 echo:
@@ -47,13 +51,16 @@ if exist %destfilepath% (
     
 ) else (
    
-    echo Removing all files and folders inside first....
-    cd /d %destdir%
-    for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
+    pushd %destdir%
+    @REM echo Removing all files and folders inside first....
+    @REM for /F "delims=" %%i in ('dir /b') do (rmdir "%%i" /s/q || del "%%i" /s/q)
+    echo Removing old .%ext% files first...
+    for /F "delims=" %%i in ('dir /b') do (del "%%i" /s/q)
 
-    echo Backup does not exist. Starts copy....
-    cd /d %srcDir%
-    copy /z "%lastmod%" "%destDir%"
+    echo Starts copy....
+    pushd %srcDir%
+
+    copy /z "%lastmod%" %destDir%
     echo: 
     goto :exit
 )
