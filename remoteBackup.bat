@@ -60,13 +60,12 @@ if exist %destfilepath% (
     echo Starts copy....
     pushd %srcDir%
 
-    copy /z "%lastmod%" %destDir%
+    copy "%lastmod%" %destDir%
     echo: 
     goto :exit
 )
 
 :exit
 @echo Completed: %date% %time%
-
 
 
