@@ -1,5 +1,5 @@
 # Backup Latest File
-Batch script for backup of latest file of specific .ext in folder. 
+Batch script for scheduled backup of the latest created `file.[ext]` in a defined source folder.
 
 * Copies only one file, the latest created by .ext
 * Removes ALL existing files in dest folder before new copy
