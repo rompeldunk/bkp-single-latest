@@ -9,7 +9,7 @@ Batch script for scheduled backup of the latest created `file.[ext]` in a define
 
 # Configuration
 Set the source dir, destination dir and file-extension by editing:
-```
+```batch
 srcDir="C:\source"
 set destdir="C:\bkp"
 set ext=bak
