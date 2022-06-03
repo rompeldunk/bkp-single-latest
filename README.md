@@ -6,6 +6,7 @@ Batch script for scheduled backup of the latest created `file.[ext]` in a define
 * Skips copy if filename already exist
 * Supports filename with spaces
 * Does NOT support "en-dash"
+* Add every run in backlup.log
 
 # Configuration
 Set the source dir, destination dir and file-extension by editing:
